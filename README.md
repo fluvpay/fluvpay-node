@@ -10,20 +10,21 @@ desenvolvedores quanto a agentes que consomem esta documentação para integrar.
 
 Requisito: Node.js 18 ou superior.
 
+### npm
+
+```bash
+npm install fluvpay
+```
+
 ### A partir do GitHub
 
-Instale direto do repositório. O `package.json` define um script `prepare` que
-compila o pacote (ESM, CJS e tipos) após o download, de modo que o diretório
-`dist/` é gerado localmente.
+Alternativa que instala direto do repositório. O `package.json` define um script
+`prepare` que compila o pacote (ESM, CJS e tipos) após o download, de modo que o
+diretório `dist/` é gerado localmente.
 
 ```bash
 npm install github:fluvpay/fluvpay-node
 ```
-
-### npm (em breve)
-
-A publicação no registry público do npm está pendente. Quando concluída, a
-instalação passará a ser `npm install fluvpay`; até lá esse comando retorna 404.
 
 O import é idêntico nos dois casos:
 
