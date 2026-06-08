@@ -1,0 +1,49 @@
+{
+  "name": "fluvpay",
+  "version": "1.0.0",
+  "description": "SDK oficial da FluvPay para Node.js e TypeScript. Cobrancas PIX, saques, transferencias internas e verificacao de webhooks.",
+  "license": "MIT",
+  "author": "FluvPay",
+  "homepage": "https://docs.fluvpay.com",
+  "keywords": [
+    "fluvpay",
+    "pix",
+    "pagamentos",
+    "payments",
+    "gateway",
+    "sdk"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "build:check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  }
+}

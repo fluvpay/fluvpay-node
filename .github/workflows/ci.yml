@@ -1,0 +1,42 @@
+name: CI SDK Node
+
+on:
+  push:
+    paths:
+      - "sdks/node/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    paths:
+      - "sdks/node/**"
+
+defaults:
+  run:
+    working-directory: sdks/node
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ["18", "20", "22"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Checar tipos
+        run: npm run build:check
+
+      - name: Compilar
+        run: npm run build
+
+      - name: Rodar testes unit e de webhook
+        run: npm test
+        env:
+          FLUVPAY_TEST_KEY: ${{ secrets.FLUVPAY_TEST_KEY }}
